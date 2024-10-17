@@ -68,6 +68,28 @@ def checkout(skus: str) -> int:
         cost += (prices['P']//5) * 200
         prices['P'] %= 5
         cost += prices['P'] * 50
-
+    if 'R' in prices:
+        prices['Q'] = prices.get('Q', 0) - prices['R']//3
+        if prices['Q'] <= 0:
+            del prices['Q']
+        cost += prices['R'] * 50
+    if 'Q' in prices:
+        cost += (prices['Q']//3) * 80
+        prices['Q'] %= 3
+        cost += prices['Q'] * 30
+    if 'S' in prices:
+        cost += prices['S'] * 30
+    if 'T' in prices:
+        cost += prices['T'] * 20
+    if 'U' in prices:
+        cost += (prices['U']//4) * 120
+        prices['U'] %= 4
+        cost += prices['U'] * 40
+    if 'V' in prices:
+        cost += (prices['V']//3) * 130
+        prices['V'] %= 3
+        cost += (prices['V']//2) * 90
+        prices['V'] %= 2
+        cost += prices['V'] * 50
 
     return cost
