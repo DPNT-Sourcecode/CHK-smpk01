@@ -91,5 +91,13 @@ def checkout(skus: str) -> int:
         cost += (prices['V']//2) * 90
         prices['V'] %= 2
         cost += prices['V'] * 50
-
+    if 'W' in prices:
+        cost += prices['W'] * 20
+    if 'X' in prices:
+        cost += prices['X'] * 90
+    if 'Y' in prices:
+        cost += prices['Y'] * 10
+    if 'Z' in prices:
+        cost += prices['Z'] * 50
+        
     return cost
