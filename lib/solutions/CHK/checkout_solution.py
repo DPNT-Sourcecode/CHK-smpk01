@@ -15,6 +15,8 @@ def checkout(skus: str) -> int:
     
     cost = 0
 
+    # always make sure to remove items if their count is 0
+
     if 'A' in prices:
         cost += (prices['A']//5) * 200
         prices['A'] %= 5
@@ -101,6 +103,13 @@ def checkout(skus: str) -> int:
         if item in prices
     }
 
+    while len(discount_group) >= 3:
+        cost += 45
+        for item in sorted(discount_group)[:3]:
+            discount_group[item] -= 1
+            if discount_group[item] == 0:
+                del discount_group[item]
+        
     if 'S' in prices:
         cost += prices['S'] * 30
     if 'T' in prices:
@@ -113,4 +122,5 @@ def checkout(skus: str) -> int:
         cost += prices['Z'] * 50
 
     return cost
+
 
