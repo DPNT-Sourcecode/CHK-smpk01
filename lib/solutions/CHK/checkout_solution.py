@@ -41,7 +41,7 @@ def checkout(skus: str) -> int:
         cost += (prices['F']//3) * 20
         cost += (prices['F']%3) * 10
     if 'G' in prices:
-        cost += prices['G']*20
+        cost += prices['G'] * 20
     if 'H' in prices:
         cost += (prices['H']//10) * 80
         prices['H'] %= 10
@@ -53,9 +53,9 @@ def checkout(skus: str) -> int:
     if 'J' in prices:
         cost += prices['J'] * 60
     if 'K' in prices:
-        cost += (prices['K']//2) * 150
+        cost += (prices['K']//2) * 120
         prices['K'] %= 2
-        cost += prices['K'] * 80
+        cost += prices['K'] * 70
     if 'L' in prices:
         cost += prices['L'] * 90
     # N before M
@@ -111,16 +111,17 @@ def checkout(skus: str) -> int:
                 del discount_group[item]
         
     if 'S' in prices:
-        cost += prices['S'] * 30
+        cost += prices['S'] * 20
     if 'T' in prices:
         cost += prices['T'] * 20
     if 'X' in prices:
-        cost += prices['X'] * 90
+        cost += prices['X'] * 17
     if 'Y' in prices:
         cost += prices['Y'] * 10
     if 'Z' in prices:
         cost += prices['Z'] * 50
 
     return cost
+
 
 
