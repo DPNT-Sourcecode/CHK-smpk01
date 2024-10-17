@@ -8,7 +8,7 @@ from collections import Counter
 def checkout(skus: str) -> int:
     prices = Counter(skus)
 
-    if not set(prices).issubset(('A', 'B', 'C', 'D', 'E')):
+    if not set(prices).issubset(('A', 'B', 'C', 'D', 'E', 'F')):
         return -1
     
     cost = 0
@@ -30,5 +30,7 @@ def checkout(skus: str) -> int:
         cost += prices['C'] * 20
     if 'D' in prices:
         cost += prices['D'] * 15
+    if 'F' in prices:
+        cost += (prices['F']//3) * 20
 
     return cost
