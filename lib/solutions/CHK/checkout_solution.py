@@ -159,12 +159,21 @@ def checkout(skus: str) -> int:
 
     # group discount
 
+    mapping_price = {
+        'S': 20,
+        'T': 20,
+        'X': 17,
+        'Y': 20,
+        'Z': 21
+    }
+
     while sum(prices.values()) >= 3:
         cost += 45
-        for item in list(prices)[:3]:
-            prices[item] -= 1
-            if prices[item] == 0:
-                del prices[item]
+        for _ in range(3):
+            biggest = max(prices, key=mapping_price.get)
+            prices[biggest] -= 1
+            if prices[biggest] == 0:
+                del prices[biggest]
         
     if 'S' in prices:
         cost += prices['S'] * 20
@@ -178,4 +187,5 @@ def checkout(skus: str) -> int:
         cost += prices['Z'] * 21
 
     return cost
+
 
