@@ -35,5 +35,15 @@ def checkout(skus: str) -> int:
     if 'F' in prices:
         cost += (prices['F']//3) * 20
         cost += (prices['F']%3) * 10
+    if 'G' in prices:
+        cost += prices['G']*20
+    if 'H' in prices:
+        cost += (prices['H']//10) * 80
+        prices['H'] %= 10
+        cost += (prices['H']//5) * 45
+        prices['H'] %= 5
+        cost += prices['H'] * 10
+    if 'I' in prices:
+        cost += prices['I'] * 35
 
     return cost
