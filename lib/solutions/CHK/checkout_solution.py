@@ -97,12 +97,6 @@ def checkout(skus: str) -> int:
 
     # group discount
 
-    discount_group = {
-        item: prices[item]
-        for item in 'STXYZ'
-        if item in prices
-    }
-
     while len(discount_group) >= 3:
         cost += 45
         for item in sorted(discount_group)[:3]:
@@ -117,11 +111,8 @@ def checkout(skus: str) -> int:
     if 'X' in prices:
         cost += prices['X'] * 17
     if 'Y' in prices:
-        cost += prices['Y'] * 10
+        cost += prices['Y'] * 20
     if 'Z' in prices:
-        cost += prices['Z'] * 50
+        cost += prices['Z'] * 21
 
     return cost
-
-
-
