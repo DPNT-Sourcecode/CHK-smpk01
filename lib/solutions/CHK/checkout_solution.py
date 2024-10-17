@@ -80,10 +80,6 @@ def checkout(skus: str) -> int:
         cost += (prices['Q']//3) * 80
         prices['Q'] %= 3
         cost += prices['Q'] * 30
-    if 'S' in prices:
-        cost += prices['S'] * 30
-    if 'T' in prices:
-        cost += prices['T'] * 20
     if 'U' in prices:
         cost += (prices['U']//4) * 120
         prices['U'] %= 4
@@ -96,6 +92,21 @@ def checkout(skus: str) -> int:
         cost += prices['V'] * 50
     if 'W' in prices:
         cost += prices['W'] * 20
+
+    # group discount
+    discount_group = 'STXYZ'
+    discount_number = min(prices.get(item, 0) for item in discount_group)
+    if discount_number > 0:
+        cost += discount_number * 45
+        for item in discount_group:
+            prices[item] = prices.get(item, 0) - discount_number
+            if prices[item] <= 0:
+                del prices['item']
+
+    if 'S' in prices:
+        cost += prices['S'] * 30
+    if 'T' in prices:
+        cost += prices['T'] * 20
     if 'X' in prices:
         cost += prices['X'] * 90
     if 'Y' in prices:
