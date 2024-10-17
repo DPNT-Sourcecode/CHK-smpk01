@@ -5,10 +5,12 @@
 
 from collections import Counter
 
+products = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 def checkout(skus: str) -> int:
     prices = Counter(skus)
 
-    if not set(prices).issubset(('A', 'B', 'C', 'D', 'E', 'F')):
+    if not set(prices).issubset(products):
         return -1
     
     cost = 0
