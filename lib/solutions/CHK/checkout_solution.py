@@ -159,7 +159,7 @@ def checkout(skus: str) -> int:
 
     # group discount
 
-    while len(prices) >= 3:
+    while sum(prices.values()) >= 3:
         cost += 45
         for item in list(prices)[:3]:
             prices[item] -= 1
@@ -178,3 +178,4 @@ def checkout(skus: str) -> int:
         cost += prices['Z'] * 21
 
     return cost
+
