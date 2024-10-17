@@ -15,17 +15,18 @@ def checkout(skus: str) -> int:
     
     cost = 0
 
-    if 'E' in prices:
-        prices['B'] = prices.get('B', 0) - prices['E']//2
-        if prices['B'] <= 0:
-            del prices['B']
-        cost += prices['E'] * 40
     if 'A' in prices:
         cost += (prices['A']//5) * 200
         prices['A'] %= 5
         cost += (prices['A']//3) * 130
         prices['A'] %= 3
         cost += prices['A'] * 50
+    # E before B
+    if 'E' in prices:
+        prices['B'] = prices.get('B', 0) - prices['E']//2
+        if prices['B'] <= 0:
+            del prices['B']
+        cost += prices['E'] * 40
     if 'B' in prices:
         cost += (prices['B']//2) * 45
         prices['B'] %= 2
@@ -55,6 +56,7 @@ def checkout(skus: str) -> int:
         cost += prices['K'] * 80
     if 'L' in prices:
         cost += prices['L'] * 90
+    # N before M
     if 'N' in prices:
         prices['M'] = prices.get('M', 0) - prices['N']//3
         if prices['M'] <= 0:
@@ -68,6 +70,7 @@ def checkout(skus: str) -> int:
         cost += (prices['P']//5) * 200
         prices['P'] %= 5
         cost += prices['P'] * 50
+    # R before Q
     if 'R' in prices:
         prices['Q'] = prices.get('Q', 0) - prices['R']//3
         if prices['Q'] <= 0:
@@ -99,5 +102,5 @@ def checkout(skus: str) -> int:
         cost += prices['Y'] * 10
     if 'Z' in prices:
         cost += prices['Z'] * 50
-        
+
     return cost
