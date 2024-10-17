@@ -18,7 +18,11 @@ def checkout(skus: str) -> int:
         prices['B'] -= free_Bs
         cost += prices['E'] * 40
     if 'A' in prices:
-        cost += (prices['A']//3) * 130 + (prices['A']%3) * 50
+        cost += (prices['A']//5) * 200
+        prices['A'] %= 5
+        cost += (prices['A']//3) * 130
+        prices['A'] %= 3
+        cost += prices['A'] * 50
     if 'B' in prices:
         cost += (prices['B']//2) * 45 + (prices['B']%2) * 30
     if 'C' in prices:
@@ -27,5 +31,6 @@ def checkout(skus: str) -> int:
         cost += prices['D'] * 15
 
     return cost
+
 
 
